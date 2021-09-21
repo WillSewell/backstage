@@ -91,30 +91,32 @@ export const UserSettingsFeatureFlags = () => {
       <Grid item xs={6} md={8}>
         <Typography variant="h5">Feature Flags</Typography>
       </Grid>
-      <Grid item xs={6} md={4}>
-        <TextField
-          label="Filter"
-          style={{ display: 'flex', justifyContent: 'flex-end' }}
-          inputRef={ref => ref && ref.focus()}
-          InputProps={{
-            ...(filterInput.length && {
-              endAdornment: (
-                <React.Fragment>
-                  <IconButton
-                    aria-label="clear filterInput's value"
-                    onClick={clearFilterInput}
-                    edge="end"
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </React.Fragment>
-              ),
-            }),
-          }}
-          onChange={e => setFilterInput(e.target.value)}
-          value={filterInput}
-        />
-      </Grid>
+      {featureFlags.length >= 10 && (
+        <Grid item xs={6} md={4}>
+          <TextField
+            label="Filter"
+            style={{ display: 'flex', justifyContent: 'flex-end' }}
+            inputRef={ref => ref && ref.focus()}
+            InputProps={{
+              ...(filterInput.length && {
+                endAdornment: (
+                  <React.Fragment>
+                    <IconButton
+                      aria-label="clear filterInput's value"
+                      onClick={clearFilterInput}
+                      edge="end"
+                    >
+                      <ClearIcon />
+                    </IconButton>
+                  </React.Fragment>
+                ),
+              }),
+            }}
+            onChange={e => setFilterInput(e.target.value)}
+            value={filterInput}
+          />
+        </Grid>
+      )}
     </Grid>
   );
 
