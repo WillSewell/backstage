@@ -15,7 +15,13 @@
  */
 
 import React, { useCallback, useState } from 'react';
-import { List, TextField, IconButton } from '@material-ui/core';
+import {
+  List,
+  TextField,
+  IconButton,
+  Grid,
+  Typography,
+} from '@material-ui/core';
 import { EmptyFlags } from './EmptyFlags';
 import { FlagItem } from './FeatureFlagsItem';
 
@@ -80,12 +86,15 @@ export const UserSettingsFeatureFlags = () => {
       )),
   );
 
-  return (
-    <InfoCard
-      title="Feature Flags"
-      subheader={
+  const Header = () => (
+    <Grid container style={{ justifyContent: 'space-between' }}>
+      <Grid item xs={6} md={8}>
+        <Typography variant="h5">Feature Flags</Typography>
+      </Grid>
+      <Grid item xs={6} md={4}>
         <TextField
           label="Filter"
+          style={{ display: 'flex', justifyContent: 'flex-end' }}
           inputRef={ref => ref && ref.focus()}
           InputProps={{
             ...(filterInput.length && {
@@ -105,8 +114,12 @@ export const UserSettingsFeatureFlags = () => {
           onChange={e => setFilterInput(e.target.value)}
           value={filterInput}
         />
-      }
-    >
+      </Grid>
+    </Grid>
+  );
+
+  return (
+    <InfoCard title={<Header />}>
       <List dense>
         {filteredFeatureFlags.map((featureFlag, index) => {
           const enabled = Boolean(state[featureFlag.name]);
