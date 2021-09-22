@@ -1,5 +1,17 @@
 # @backstage/plugin-kubernetes
 
+## 0.4.14
+
+### Patch Changes
+
+- 7a0c334707: Provide access to the Kubernetes dashboard when viewing a specific resource
+- Updated dependencies
+  - @backstage/plugin-catalog-react@0.5.0
+  - @backstage/catalog-model@0.9.3
+  - @backstage/config@0.1.10
+  - @backstage/core-components@0.4.3
+  - @backstage/plugin-kubernetes-common@0.1.4
+
 ## 0.4.13
 
 ### Patch Changes
